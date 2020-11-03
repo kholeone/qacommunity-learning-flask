@@ -30,3 +30,9 @@ def delete():
     db.session.commit()
     return "Deleted game from the database"
 
+@app.route('/count')
+def count():
+    number_of_games = Games.query.count()
+    return str(number_of_games)
+
+
