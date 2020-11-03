@@ -1,6 +1,13 @@
 from application import app, db
 from application.models import Games
 
+@app.route('/add')
+def add():
+    new_game = Games(name="New Game")
+    db.session.add(new_game)
+    db.session.commit()
+    return "Added new game to database"
+
 @app.route('/read')
 def read():
     all_games = Games.query.all()
@@ -15,3 +22,11 @@ def update(name):
     first_game.name = name
     db.session.commit()
     return first_game.name
+
+@app.route('/delete')
+def delete():
+    new_game = Games(name="New Game")
+    db.session.delete(new_game)
+    db.session.commit()
+    return "Deleted game from the database"
+

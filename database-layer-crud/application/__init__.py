@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:database@34.105.222.230/'
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///video_games.db"
 
 db = SQLAlchemy(app)
 
