@@ -15,3 +15,30 @@ def add():
     db.session.commit()
     return redirect(url_for('index'))
 
+@app.route('/complete/<int:task_id>')
+def complete(task_id):
+    task_to_update = Lists.query.get(task_id)
+    task_to_update.complete = True
+    db.session.commit()
+    return redirect(url_for('index')) 
+
+@app.route('/incomplete/<int:task_id>')
+def incomplete(task_id):
+    task_to_update = Lists.query.get(task_id)
+    task_to_update.complete = False
+    db.session.commit()
+    return redirect(url_for('index'))
+
+@app.route('/update/<task>')
+def update(task):
+    task_to_update = Lists.query.first()
+    task_to_update.task = task
+    db.session.commit()
+    return redirect(url_for('index')) 
+
+@app.route('/delete')
+def delete():
+    task_to_delete = Lists.query.first()
+    db.session.delete(task_to_delete)
+    db.session.commit()
+    return redirect(url_for('index'))
