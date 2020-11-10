@@ -1,10 +1,10 @@
 {% extends 'layout.html' %}
 {% block body_content %}
 
-{% for task in all_task %}
+{% for todo in all_todo %}
 
-{{ task.task }} <br>
-{% if task.complete %} 
+{{ todo.task }} <br>
+{% if todo.complete %} 
 &#9989
 {% endif %}<br><br>
 
